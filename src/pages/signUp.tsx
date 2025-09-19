@@ -2,8 +2,12 @@ import React from "react";
 import SignUp from "../../components/auth/SignUp";
 import AuthLayout from "../../components/auth/AuthLayout";
 
-const signUp = () => {
-  return <AuthLayout children={<SignUp />} />;
+const SignUpPage = () => {
+  return (
+    <AuthLayout>
+      <SignUp />
+    </AuthLayout>
+  );
 };
 
-export default signUp;
+export default SignUpPage;
