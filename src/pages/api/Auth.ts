@@ -2,7 +2,7 @@ import { LogIn, SignUp } from "@/types/Auth";
 import { User } from "@/types/User";
 import Router from "next/router";
 
-const baseURL = "http://localhost:8000";
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const Signup = async (data: SignUp): Promise<{ status: string }> => {
   try {
