@@ -12,7 +12,7 @@ const InputForm = ({ label, type, placeholder, onChange }: InputFormProps) => {
 
   if (type === "password") {
     return (
-      <div className="w-full flex flex-col gap-2">
+      <div className="w-full md:w-[30vw] flex flex-col gap-2">
         <label className="text-md text-heading">{label}</label>
         <div className="relative w-full">
           <input
@@ -33,7 +33,7 @@ const InputForm = ({ label, type, placeholder, onChange }: InputFormProps) => {
     );
   } else {
     return (
-      <div className="w-full flex flex-col gap-2">
+      <div className="w-full md:w-[30vw] flex flex-col gap-2">
         <label className="text-md text-heading">{label}</label>
         <input
           className="border-2 border-subheading rounded-md py-2 px-3"

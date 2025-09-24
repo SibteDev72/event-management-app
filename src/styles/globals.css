@@ -6,8 +6,8 @@
   /* --background: #ffffff;
   --foreground: #171717; */
 
-  --color-primary: #3a9af9;
-  --color-secondary: #005477;
+  --color-primary: #2b293d;
+  --color-secondary: #F5F5F5;
   --color-tertiary: #f6f8fa;
   --color-accent: #005477;
 
@@ -202,7 +202,7 @@
     overflow-x: hidden;
 
     width: 100vw;
-    @apply bg-white;
+    @apply bg-secondary;
   }
 
   h1,

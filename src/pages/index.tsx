@@ -1,12 +1,20 @@
-import AuthLayout from "../../components/auth/AuthLayout";
-import LogIn from "../../components/auth/LogIn";
+import { useEffect } from "react";
+import Home from "../../components/home/Home";
+import DefaultLayout from "../../layouts/DefaultLayout";
 
-const HomePage = () => {
+const index = () => {
+  useEffect(() => {
+    const userStatus = localStorage.getItem("User Status");
+    if (userStatus === "" || userStatus === null) {
+      localStorage.setItem("User Status", "LoggedOff");
+    }
+  }, []);
+
   return (
-    <AuthLayout>
-      <LogIn />
-    </AuthLayout>
+    <DefaultLayout>
+      <Home />
+    </DefaultLayout>
   );
 };
 
-export default HomePage;
+export default index;
