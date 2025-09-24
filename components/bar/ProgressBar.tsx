@@ -1,12 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const ProgressBar = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col gap-12 m-6 md:m-12">
       <div className="flex flex-row gap-8">
-        <img
+        <Image
+          width={24}
+          height={24}
+          alt=""
           onClick={() => router.back()}
           src="/assets/back.png"
           className="w-8 h-auto cursor-pointer"

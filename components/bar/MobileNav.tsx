@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { navbarOpt } from "../../constant/data";
 import { useRouter } from "next/router";
+import { User } from "@/types/User";
+import Image from "next/image";
 
 interface MobileNavProps {
   LogInStatus: boolean;
-  userInfo: any;
+  userInfo: User | null;
 }
 
 const MobileNav = ({ LogInStatus, userInfo }: MobileNavProps) => {
@@ -83,7 +85,7 @@ const MobileNav = ({ LogInStatus, userInfo }: MobileNavProps) => {
           {LogInStatus && (
             <div className="flex flex-col gap-3">
               <p className="text-lg text-white font-medium">
-                {userInfo.fullName}
+                {userInfo?.fullName}
               </p>
               <p className="text-lg text-white font-medium">My Events</p>
               <button
@@ -94,7 +96,13 @@ const MobileNav = ({ LogInStatus, userInfo }: MobileNavProps) => {
                 className="text-md font-medium bg-yellow-400 px-3 py-1 gap-2 flex flex-row items-center justify-center rounded-md text-heading cursor-pointer"
               >
                 Create
-                <img className="w-5 h-5" src="/assets/create.png" alt="icon" />
+                <Image
+                  width={24}
+                  height={24}
+                  className="w-5 h-5"
+                  src="/assets/create.png"
+                  alt="icon"
+                />
               </button>
               <button
                 onClick={handleLogout}

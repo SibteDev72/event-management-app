@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import Home from "../../components/home/Home";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
-const index = () => {
+const IndexPage = () => {
   useEffect(() => {
     const userStatus = localStorage.getItem("User Status");
-    if (userStatus === "" || userStatus === null) {
+    if (!userStatus) {
       localStorage.setItem("User Status", "LoggedOff");
     }
   }, []);
@@ -17,4 +17,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default IndexPage;

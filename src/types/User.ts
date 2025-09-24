@@ -1,0 +1,9 @@
+// types/User.ts
+export interface User {
+  _id: string;
+  fullName: string;
+  email: string;
+  password?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

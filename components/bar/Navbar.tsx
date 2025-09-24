@@ -3,20 +3,25 @@ import React, { useEffect, useState } from "react";
 import { navbarOpt } from "../../constant/data";
 import { useRouter } from "next/router";
 import MobileNav from "./MobileNav";
+import { User } from "@/types/User";
+import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
   const [logInStatus, setLogInStatus] = useState<boolean>(true);
-  const [userInfo, setUserInfo] = useState<any>("");
+  const [userInfo, setUserInfo] = useState<User | null>(null);
 
   useEffect(() => {
-    localStorage.getItem("User Status") === "LoggedIn"
-      ? setLogInStatus(true)
-      : setLogInStatus(false);
-    if (logInStatus) {
-      setUserInfo(JSON.parse(localStorage.getItem("User Info") || "{}"));
-    }
+    const status = localStorage.getItem("User Status");
+    setLogInStatus(status === "LoggedIn");
   }, []);
+
+  useEffect(() => {
+    if (logInStatus) {
+      const info = localStorage.getItem("User Info");
+      setUserInfo(info ? JSON.parse(info) : null);
+    }
+  }, [logInStatus]);
 
   const handleLogout = () => {
     localStorage.setItem("User Info", "");
@@ -49,14 +54,20 @@ const Navbar = () => {
       </div>
       {logInStatus && (
         <div className="hidden lg:flex flex-row gap-3 justify-center items-center">
-          <p className="text-lg text-white">{userInfo.fullName}</p>
+          <p className="text-lg text-white">{userInfo?.fullName}</p>
           <p className="text-lg text-white font-medium">My Events</p>
           <button
             onClick={() => router.push("/event/create")}
             className="text-md font-medium bg-yellow-400 px-3 py-1 gap-2 flex flex-row items-center  rounded-md text-heading cursor-pointer"
           >
             Create
-            <img className="w-6 h-6" src="/assets/create.png" alt="icon" />
+            <Image
+              width={24}
+              height={24}
+              className="w-6 h-6"
+              src="/assets/create.png"
+              alt="icon"
+            />
           </button>
           <button
             onClick={handleLogout}
