@@ -17,7 +17,10 @@ const EventCard = ({ EventDetails }: EventCardProps) => {
       type === "delete"
         ? await deleteEvent(eventID, userToken)
         : type === "edit"
-        ? router.push("/event/edit")
+        ? router.push({
+            pathname: "/event/edit",
+            query: { eventID: eventID },
+          })
         : "";
     }
   };
@@ -33,7 +36,7 @@ const EventCard = ({ EventDetails }: EventCardProps) => {
     }
   }, [EventDetails?.eventImageUrl]);
   return (
-    <div className="w-full flex flex-col pb-2 shadow-sm bg-white shadow-black rounded-md">
+    <div className="w-full relative flex flex-col pb-2 shadow-sm bg-white shadow-black rounded-md">
       <div
         className="w-full h-[20vh] rounded-t-md bg-cover bg-center relative"
         style={{ backgroundImage: `url(${bgImage})` }}
@@ -53,6 +56,10 @@ const EventCard = ({ EventDetails }: EventCardProps) => {
           {EventDetails.description}
         </p>
         <div className="text-heading text-xs md:text-sm flex flex-row items-center gap-2">
+          <img src="/assets/location.png" className="w-4 md:w-5 h-auto" />
+          {EventDetails.location}
+        </div>
+        <div className="text-heading text-xs md:text-sm flex flex-row items-center gap-2">
           <img src="/assets/calendar.png" className="w-4 md:w-5 h-auto" />
           {EventDetails.startDate}
         </div>
@@ -60,6 +67,9 @@ const EventCard = ({ EventDetails }: EventCardProps) => {
           <img src="/assets/clock.png" className="w-4 md:w-5 h-auto" />
           {EventDetails.startTime} to {EventDetails.endTime}
         </div>
+        <p className="text-sm font-medium capitalize">
+          {EventDetails.eventType}
+        </p>
         <div className="text-heading text-xs md:text-sm flex flex-row items-center gap-2 capitalize">
           <img src="/assets/ticket.png" className="w-4 md:w-5 h-auto" />
           {EventDetails.ticketType}
@@ -72,7 +82,7 @@ const EventCard = ({ EventDetails }: EventCardProps) => {
         )}
       </div>
       {router.pathname === "/event/myEvents" && (
-        <div className="self-end mx-3 flex flex-row gap-2">
+        <div className="absolute bottom-3 right-3 mx-3 flex flex-row gap-2">
           <button
             // @ts-ignore
             onClick={() => handleAPI("edit", EventDetails._id)}

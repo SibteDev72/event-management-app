@@ -6,7 +6,7 @@ import ProgressBar from "../../../components/bar/ProgressBar";
 const create = () => {
   return (
     <DefaultLayout>
-      <ProgressBar />
+      <ProgressBar type="create" />
       <CreateEvent />
     </DefaultLayout>
   );

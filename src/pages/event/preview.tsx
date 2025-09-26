@@ -2,16 +2,18 @@ import React from "react";
 import PreviewEvent from "../../../components/events/PreviewEvent";
 import DefaultLayout from "../../../layouts/DefaultLayout";
 import ProgressBar from "../../../components/bar/ProgressBar";
+import { useRouter } from "next/router";
 
-const preview = () => {
+const Preview = () => {
+  const router = useRouter();
+  const { type } = router.query;
+
   return (
-    <div>
-      <DefaultLayout>
-        <ProgressBar />
-        <PreviewEvent />
-      </DefaultLayout>
-    </div>
+    <DefaultLayout>
+      <ProgressBar type={type as string} />
+      <PreviewEvent type={type as string} />
+    </DefaultLayout>
   );
 };
 
-export default preview;
+export default Preview;

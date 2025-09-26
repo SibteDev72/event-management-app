@@ -6,7 +6,7 @@ import EditEvent from "../../../components/events/EditEvent";
 const edit = () => {
   return (
     <DefaultLayout>
-      <ProgressBar />
+      <ProgressBar type="edit" />
       <EditEvent />
     </DefaultLayout>
   );

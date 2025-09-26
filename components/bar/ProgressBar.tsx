@@ -2,7 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const ProgressBar = () => {
+interface ProgressBarProps {
+  type: string;
+}
+
+const ProgressBar = ({ type }: ProgressBarProps) => {
   const router = useRouter();
   return (
     <div className="flex flex-col gap-12 m-6 md:m-12">
@@ -27,13 +31,7 @@ const ProgressBar = () => {
       </div>
       <div className="w-full flex flex-row gap-4">
         <div className="w-screen flex flex-col items-center justify-center">
-          <p className="text-lg text-primary font-bold">
-            {router.pathname === "/event/create"
-              ? "Create"
-              : router.pathname === "/event/edit"
-              ? "Edit"
-              : ""}
-          </p>
+          <p className="text-lg text-primary font-bold capitalize">{type}</p>
           <div className="w-full bg-primary rounded-full h-[1vh]" />
         </div>
         <div className="w-screen flex flex-col items-center justify-center">

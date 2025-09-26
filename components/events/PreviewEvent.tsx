@@ -1,8 +1,15 @@
-import { createEvent } from "@/pages/api/Event";
+import { createEvent, updateEvent } from "@/pages/api/Event";
 import { EventDetails } from "@/types/Event";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const PreviewEvent = () => {
+interface PreviewEventProps {
+  type: string;
+}
+
+const PreviewEvent = ({ type }: PreviewEventProps) => {
+  const router = useRouter();
+  const { eventID } = router.query;
   const [eventDetails, setEventDetails] = useState<EventDetails>({
     user_info: {
       user_id: "",
@@ -37,14 +44,18 @@ const PreviewEvent = () => {
   const handlePublish = async () => {
     const userToken = localStorage.getItem("User Token");
     if (userToken) {
-      await createEvent(eventDetails, userToken);
+      type === "create"
+        ? await createEvent(eventDetails, userToken)
+        : type === "edit"
+        ? await updateEvent(eventDetails, eventID as string, userToken)
+        : "";
     }
   };
 
   return (
     <div className="px-4 sm:px-6 md:px-12 py-6 w-full flex flex-col gap-6 md:gap-12">
       <p className="text-sm lg:text-lg text-heading">
-        Nearly there! Check everything’s correct.
+        Nearly there! Check everything’s correct. {eventID}
       </p>
       <div className="w-full flex flex-col gap-8 xs:px-4 sm:px-6 md:px-12 lg:px-14 xl:px-[8rem]">
         <div className="border-2 border-heading rounded-xl p-4 md:p-8 flex flex-col gap-2 w-full self-center">

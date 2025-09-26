@@ -12,9 +12,10 @@ import { EventCategories } from "../../constant/data";
 interface EventFormProps {
   type: string;
   data: EventDetails;
+  eventID?: string;
 }
 
-const EventForm = ({ data, type }: EventFormProps) => {
+const EventForm = ({ data, type, eventID }: EventFormProps) => {
   const router = useRouter();
 
   const [formData, setFormData] = useState<EventDetails>(data);
@@ -69,7 +70,15 @@ const EventForm = ({ data, type }: EventFormProps) => {
     e.preventDefault();
     localStorage.setItem("EventDetails", JSON.stringify(formData));
     alert("Event saved successfully!");
-    router.push("/event/preview");
+    type === "create"
+      ? router.push({
+          pathname: "/event/preview",
+          query: { type: type },
+        })
+      : router.push({
+          pathname: "/event/preview",
+          query: { type: type, eventID: eventID },
+        });
   };
   return (
     <form onSubmit={handleSubmit} className="w-full mt-4 flex flex-col gap-10">
