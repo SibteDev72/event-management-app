@@ -44,6 +44,7 @@ export const Login = async (
     const result = await response.json();
     if (result && result.status !== "User not found") {
       localStorage.setItem("User Info", JSON.stringify(result.user));
+      localStorage.setItem("User Token", result.token);
       localStorage.setItem("User Status", "LoggedIn");
       return { status: "User Found", user: result.user };
     } else {

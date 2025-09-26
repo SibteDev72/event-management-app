@@ -18,6 +18,8 @@ const ProgressBar = () => {
         <h1 className="text-2xl lg:text-3xl font-bold">
           {router.pathname === "/event/create"
             ? "Create a New Event"
+            : router.pathname === "/event/edit"
+            ? "Edit Event"
             : router.pathname === "/event/preview"
             ? "Preview Event"
             : ""}
@@ -25,7 +27,13 @@ const ProgressBar = () => {
       </div>
       <div className="w-full flex flex-row gap-4">
         <div className="w-screen flex flex-col items-center justify-center">
-          <p className="text-lg text-primary font-bold">Create</p>
+          <p className="text-lg text-primary font-bold">
+            {router.pathname === "/event/create"
+              ? "Create"
+              : router.pathname === "/event/edit"
+              ? "Edit"
+              : ""}
+          </p>
           <div className="w-full bg-primary rounded-full h-[1vh]" />
         </div>
         <div className="w-screen flex flex-col items-center justify-center">

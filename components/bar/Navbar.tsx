@@ -55,7 +55,12 @@ const Navbar = () => {
       {logInStatus && (
         <div className="hidden lg:flex flex-row gap-3 justify-center items-center">
           <p className="text-lg text-white">{userInfo?.fullName}</p>
-          <p className="text-lg text-white font-medium">My Events</p>
+          <p
+            onClick={() => router.push("/event/myEvents")}
+            className="text-lg text-white font-medium cursor-pointer"
+          >
+            My Events
+          </p>
           <button
             onClick={() => router.push("/event/create")}
             className="text-md font-medium bg-yellow-400 px-3 py-1 gap-2 flex flex-row items-center  rounded-md text-heading cursor-pointer"
@@ -78,7 +83,7 @@ const Navbar = () => {
         </div>
       )}
       {!logInStatus && (
-        <div className="hidden md:flex flex-row gap-4">
+        <div className="hidden lg:flex flex-row gap-4">
           <button
             onClick={() => router.push("/logIn")}
             className="bg-transparent text-sm font-medium border-2 border-yellow-400 px-6 py-2 text-white rounded-md"

@@ -2,7 +2,7 @@ import React from "react";
 import EventForm from "../forms/EventForm";
 import { EventDetails } from "@/types/Event";
 
-const CreateEvent = () => {
+const EditEvent = () => {
   const data: EventDetails = {
     user_info: {
       user_id: "",
@@ -24,9 +24,9 @@ const CreateEvent = () => {
   };
   return (
     <div className="px-4 sm:px-6 md:px-12 py-6">
-      <EventForm type="create" data={data} />
+      <EventForm type="edit" data={data} />
     </div>
   );
 };
 
-export default CreateEvent;
+export default EditEvent;

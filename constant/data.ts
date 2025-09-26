@@ -24,3 +24,11 @@ export const navbarOpt = [
     url: "/contact",
   },
 ];
+
+export const EventCategories = [
+  "all",
+  "sports",
+  "general",
+  "music",
+  "festival",
+];

@@ -17,7 +17,7 @@ const DropdownForm = ({
     <div className="w-full md:w-[30vw] flex flex-col gap-2">
       <label className="text-md text-heading">{label}</label>
       <select
-        className="border-2 bg-white border-subheading rounded-md py-2 px-3"
+        className="border-2 capitalize bg-white border-subheading rounded-md py-2 px-3"
         defaultValue=""
         onChange={(e) => onChange(e.target.value)}
       >

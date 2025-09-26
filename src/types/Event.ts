@@ -1,4 +1,9 @@
-export interface event {
+export interface EventDetails {
+  user_info: {
+    user_id: string;
+    user_name: string;
+    user_email: string;
+  };
   eventTitle: string;
   eventCategory: string;
   eventImageUrl: string;

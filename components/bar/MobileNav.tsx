@@ -87,7 +87,12 @@ const MobileNav = ({ LogInStatus, userInfo }: MobileNavProps) => {
               <p className="text-lg text-white font-medium">
                 {userInfo?.fullName}
               </p>
-              <p className="text-lg text-white font-medium">My Events</p>
+              <p
+                onClick={() => router.push("/event/myEvents")}
+                className="text-lg text-white font-medium cursor-pointer"
+              >
+                My Events
+              </p>
               <button
                 onClick={() => {
                   router.push("/event/create");
