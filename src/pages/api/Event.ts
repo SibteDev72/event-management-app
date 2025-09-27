@@ -28,6 +28,7 @@ export const createEvent = async (data: EventDetails, token: string) => {
 };
 
 export const getEvent = async (category: string) => {
+  // http://localhost:8000/event/public/category/festive
   try {
     const response = await fetch(
       `${baseURL}/event/public/category/${category}`,
